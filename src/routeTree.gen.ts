@@ -10,11 +10,29 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CarsIndexRouteImport } from './routes/cars.index'
+import { Route as CarsSlugRouteImport } from './routes/cars.$slug'
 import { Route as ApiPublicVehiclePhotoSplatRouteImport } from './routes/api/public/vehicle-photo.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarsIndexRoute = CarsIndexRouteImport.update({
+  id: '/cars/',
+  path: '/cars/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarsSlugRoute = CarsSlugRouteImport.update({
+  id: '/cars/$slug',
+  path: '/cars/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicVehiclePhotoSplatRoute =
@@ -26,27 +44,46 @@ const ApiPublicVehiclePhotoSplatRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cars/$slug': typeof CarsSlugRoute
+  '/cars/': typeof CarsIndexRoute
   '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cars/$slug': typeof CarsSlugRoute
+  '/cars': typeof CarsIndexRoute
   '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cars/$slug': typeof CarsSlugRoute
+  '/cars/': typeof CarsIndexRoute
   '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/public/vehicle-photo/$'
+  fullPaths:
+    '/' | '/about' | '/cars/$slug' | '/cars/' | '/api/public/vehicle-photo/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/public/vehicle-photo/$'
-  id: '__root__' | '/' | '/api/public/vehicle-photo/$'
+  to: '/' | '/about' | '/cars/$slug' | '/cars' | '/api/public/vehicle-photo/$'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/cars/$slug'
+    | '/cars/'
+    | '/api/public/vehicle-photo/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CarsSlugRoute: typeof CarsSlugRoute
+  CarsIndexRoute: typeof CarsIndexRoute
   ApiPublicVehiclePhotoSplatRoute: typeof ApiPublicVehiclePhotoSplatRoute
 }
 
@@ -57,6 +94,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cars/': {
+      id: '/cars/'
+      path: '/cars'
+      fullPath: '/cars/'
+      preLoaderRoute: typeof CarsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cars/$slug': {
+      id: '/cars/$slug'
+      path: '/cars/$slug'
+      fullPath: '/cars/$slug'
+      preLoaderRoute: typeof CarsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/vehicle-photo/$': {
@@ -71,6 +129,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CarsSlugRoute: CarsSlugRoute,
+  CarsIndexRoute: CarsIndexRoute,
   ApiPublicVehiclePhotoSplatRoute: ApiPublicVehiclePhotoSplatRoute,
 }
 export const routeTree = rootRouteImport
