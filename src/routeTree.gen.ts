@@ -10,9 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ImportRouteImport } from './routes/import'
 import { Route as CarsIndexRouteImport } from './routes/cars.index'
 import { Route as CarsSlugRouteImport } from './routes/cars.$slug'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedAdminEnquiriesRouteImport } from './routes/_authenticated/admin.enquiries'
+import { Route as AuthenticatedAdminVehiclesIdRouteImport } from './routes/_authenticated/admin.vehicles.$id'
 import { Route as ApiPublicVehiclePhotoSplatRouteImport } from './routes/api/public/vehicle-photo.$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -20,9 +27,28 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImportRoute = ImportRouteImport.update({
+  id: '/import',
+  path: '/import',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CarsIndexRoute = CarsIndexRouteImport.update({
@@ -35,6 +61,23 @@ const CarsSlugRoute = CarsSlugRouteImport.update({
   path: '/cars/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminEnquiriesRoute =
+  AuthenticatedAdminEnquiriesRouteImport.update({
+    id: '/admin/enquiries',
+    path: '/admin/enquiries',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminVehiclesIdRoute =
+  AuthenticatedAdminVehiclesIdRouteImport.update({
+    id: '/admin/vehicles/$id',
+    path: '/admin/vehicles/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const ApiPublicVehiclePhotoSplatRoute =
   ApiPublicVehiclePhotoSplatRouteImport.update({
     id: '/api/public/vehicle-photo/$',
@@ -45,43 +88,94 @@ const ApiPublicVehiclePhotoSplatRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/import': typeof ImportRoute
   '/cars/$slug': typeof CarsSlugRoute
   '/cars/': typeof CarsIndexRoute
+  '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/admin/vehicles/$id': typeof AuthenticatedAdminVehiclesIdRoute
   '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/import': typeof ImportRoute
   '/cars/$slug': typeof CarsSlugRoute
   '/cars': typeof CarsIndexRoute
+  '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/admin/vehicles/$id': typeof AuthenticatedAdminVehiclesIdRoute
   '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/import': typeof ImportRoute
   '/cars/$slug': typeof CarsSlugRoute
   '/cars/': typeof CarsIndexRoute
+  '/_authenticated/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/admin/vehicles/$id': typeof AuthenticatedAdminVehiclesIdRoute
   '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/cars/$slug' | '/cars/' | '/api/public/vehicle-photo/$'
+    | '/'
+    | '/about'
+    | '/auth'
+    | '/contact'
+    | '/import'
+    | '/cars/$slug'
+    | '/cars/'
+    | '/admin/enquiries'
+    | '/admin/'
+    | '/admin/vehicles/$id'
+    | '/api/public/vehicle-photo/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/cars/$slug' | '/cars' | '/api/public/vehicle-photo/$'
+  to:
+    | '/'
+    | '/about'
+    | '/auth'
+    | '/contact'
+    | '/import'
+    | '/cars/$slug'
+    | '/cars'
+    | '/admin/enquiries'
+    | '/admin'
+    | '/admin/vehicles/$id'
+    | '/api/public/vehicle-photo/$'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
+    | '/auth'
+    | '/contact'
+    | '/import'
     | '/cars/$slug'
     | '/cars/'
+    | '/_authenticated/admin/enquiries'
+    | '/_authenticated/admin/'
+    | '/_authenticated/admin/vehicles/$id'
     | '/api/public/vehicle-photo/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
+  ContactRoute: typeof ContactRoute
+  ImportRoute: typeof ImportRoute
   CarsSlugRoute: typeof CarsSlugRoute
   CarsIndexRoute: typeof CarsIndexRoute
   ApiPublicVehiclePhotoSplatRoute: typeof ApiPublicVehiclePhotoSplatRoute
@@ -96,11 +190,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/import': {
+      id: '/import'
+      path: '/import'
+      fullPath: '/import'
+      preLoaderRoute: typeof ImportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cars/': {
@@ -117,6 +239,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CarsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/enquiries': {
+      id: '/_authenticated/admin/enquiries'
+      path: '/admin/enquiries'
+      fullPath: '/admin/enquiries'
+      preLoaderRoute: typeof AuthenticatedAdminEnquiriesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/vehicles/$id': {
+      id: '/_authenticated/admin/vehicles/$id'
+      path: '/admin/vehicles/$id'
+      fullPath: '/admin/vehicles/$id'
+      preLoaderRoute: typeof AuthenticatedAdminVehiclesIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/api/public/vehicle-photo/$': {
       id: '/api/public/vehicle-photo/$'
       path: '/api/public/vehicle-photo/$'
@@ -127,9 +270,28 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminEnquiriesRoute: typeof AuthenticatedAdminEnquiriesRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedAdminVehiclesIdRoute: typeof AuthenticatedAdminVehiclesIdRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminEnquiriesRoute: AuthenticatedAdminEnquiriesRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedAdminVehiclesIdRoute: AuthenticatedAdminVehiclesIdRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
+  ContactRoute: ContactRoute,
+  ImportRoute: ImportRoute,
   CarsSlugRoute: CarsSlugRoute,
   CarsIndexRoute: CarsIndexRoute,
   ApiPublicVehiclePhotoSplatRoute: ApiPublicVehiclePhotoSplatRoute,
