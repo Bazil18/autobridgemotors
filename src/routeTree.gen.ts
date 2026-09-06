@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ImportRouteImport } from './routes/import'
 import { Route as CarsIndexRouteImport } from './routes/cars.index'
 import { Route as CarsSlugRouteImport } from './routes/cars.$slug'
 import { Route as ApiPublicVehiclePhotoSplatRouteImport } from './routes/api/public/vehicle-photo.$'
@@ -23,6 +25,16 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImportRoute = ImportRouteImport.update({
+  id: '/import',
+  path: '/import',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CarsIndexRoute = CarsIndexRouteImport.update({
@@ -45,6 +57,8 @@ const ApiPublicVehiclePhotoSplatRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/import': typeof ImportRoute
   '/cars/$slug': typeof CarsSlugRoute
   '/cars/': typeof CarsIndexRoute
   '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
@@ -52,6 +66,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/import': typeof ImportRoute
   '/cars/$slug': typeof CarsSlugRoute
   '/cars': typeof CarsIndexRoute
   '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
@@ -60,6 +76,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/import': typeof ImportRoute
   '/cars/$slug': typeof CarsSlugRoute
   '/cars/': typeof CarsIndexRoute
   '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
@@ -67,13 +85,28 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/cars/$slug' | '/cars/' | '/api/public/vehicle-photo/$'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/import'
+    | '/cars/$slug'
+    | '/cars/'
+    | '/api/public/vehicle-photo/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/cars/$slug' | '/cars' | '/api/public/vehicle-photo/$'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/import'
+    | '/cars/$slug'
+    | '/cars'
+    | '/api/public/vehicle-photo/$'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/contact'
+    | '/import'
     | '/cars/$slug'
     | '/cars/'
     | '/api/public/vehicle-photo/$'
@@ -82,6 +115,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  ImportRoute: typeof ImportRoute
   CarsSlugRoute: typeof CarsSlugRoute
   CarsIndexRoute: typeof CarsIndexRoute
   ApiPublicVehiclePhotoSplatRoute: typeof ApiPublicVehiclePhotoSplatRoute
@@ -101,6 +136,20 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/import': {
+      id: '/import'
+      path: '/import'
+      fullPath: '/import'
+      preLoaderRoute: typeof ImportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cars/': {
@@ -130,6 +179,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  ImportRoute: ImportRoute,
   CarsSlugRoute: CarsSlugRoute,
   CarsIndexRoute: CarsIndexRoute,
   ApiPublicVehiclePhotoSplatRoute: ApiPublicVehiclePhotoSplatRoute,
