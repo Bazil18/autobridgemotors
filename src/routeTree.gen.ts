@@ -10,33 +10,44 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicVehiclePhotoSplatRouteImport } from './routes/api/public/vehicle-photo.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicVehiclePhotoSplatRoute =
+  ApiPublicVehiclePhotoSplatRouteImport.update({
+    id: '/api/public/vehicle-photo/$',
+    path: '/api/public/vehicle-photo/$',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/api/public/vehicle-photo/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/api/public/vehicle-photo/$'
+  id: '__root__' | '/' | '/api/public/vehicle-photo/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiPublicVehiclePhotoSplatRoute: typeof ApiPublicVehiclePhotoSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +59,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/vehicle-photo/$': {
+      id: '/api/public/vehicle-photo/$'
+      path: '/api/public/vehicle-photo/$'
+      fullPath: '/api/public/vehicle-photo/$'
+      preLoaderRoute: typeof ApiPublicVehiclePhotoSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiPublicVehiclePhotoSplatRoute: ApiPublicVehiclePhotoSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
