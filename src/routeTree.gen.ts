@@ -19,6 +19,7 @@ import { Route as CarsIndexRouteImport } from './routes/cars.index'
 import { Route as CarsSlugRouteImport } from './routes/cars.$slug'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminEnquiriesRouteImport } from './routes/_authenticated/admin.enquiries'
+import { Route as AuthenticatedAdminVehiclesIdRouteImport } from './routes/_authenticated/admin.vehicles.$id'
 import { Route as ApiPublicVehiclePhotoSplatRouteImport } from './routes/api/public/vehicle-photo.$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -71,6 +72,12 @@ const AuthenticatedAdminEnquiriesRoute =
     path: '/admin/enquiries',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedAdminVehiclesIdRoute =
+  AuthenticatedAdminVehiclesIdRouteImport.update({
+    id: '/admin/vehicles/$id',
+    path: '/admin/vehicles/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const ApiPublicVehiclePhotoSplatRoute =
   ApiPublicVehiclePhotoSplatRouteImport.update({
     id: '/api/public/vehicle-photo/$',
@@ -88,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/cars/': typeof CarsIndexRoute
   '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/admin/vehicles/$id': typeof AuthenticatedAdminVehiclesIdRoute
   '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
 }
 export interface FileRoutesByTo {
@@ -100,6 +108,7 @@ export interface FileRoutesByTo {
   '/cars': typeof CarsIndexRoute
   '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
+  '/admin/vehicles/$id': typeof AuthenticatedAdminVehiclesIdRoute
   '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
 }
 export interface FileRoutesById {
@@ -114,6 +123,7 @@ export interface FileRoutesById {
   '/cars/': typeof CarsIndexRoute
   '/_authenticated/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/admin/vehicles/$id': typeof AuthenticatedAdminVehiclesIdRoute
   '/api/public/vehicle-photo/$': typeof ApiPublicVehiclePhotoSplatRoute
 }
 export interface FileRouteTypes {
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/cars/'
     | '/admin/enquiries'
     | '/admin/'
+    | '/admin/vehicles/$id'
     | '/api/public/vehicle-photo/$'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/cars'
     | '/admin/enquiries'
     | '/admin'
+    | '/admin/vehicles/$id'
     | '/api/public/vehicle-photo/$'
   id:
     | '__root__'
@@ -153,6 +165,7 @@ export interface FileRouteTypes {
     | '/cars/'
     | '/_authenticated/admin/enquiries'
     | '/_authenticated/admin/'
+    | '/_authenticated/admin/vehicles/$id'
     | '/api/public/vehicle-photo/$'
   fileRoutesById: FileRoutesById
 }
@@ -240,6 +253,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminEnquiriesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/admin/vehicles/$id': {
+      id: '/_authenticated/admin/vehicles/$id'
+      path: '/admin/vehicles/$id'
+      fullPath: '/admin/vehicles/$id'
+      preLoaderRoute: typeof AuthenticatedAdminVehiclesIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/api/public/vehicle-photo/$': {
       id: '/api/public/vehicle-photo/$'
       path: '/api/public/vehicle-photo/$'
@@ -253,11 +273,13 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminEnquiriesRoute: typeof AuthenticatedAdminEnquiriesRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedAdminVehiclesIdRoute: typeof AuthenticatedAdminVehiclesIdRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminEnquiriesRoute: AuthenticatedAdminEnquiriesRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedAdminVehiclesIdRoute: AuthenticatedAdminVehiclesIdRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
