@@ -89,7 +89,7 @@ function VehiclePage() {
 
   return (
     <SiteLayout>
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12 py-8">
         <Link
           to="/cars"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
@@ -98,7 +98,7 @@ function VehiclePage() {
         </Link>
 
         <div className="mt-6 grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-          <div>
+          <div className="min-w-0">
             <VehicleGallery images={vehicle.images} alt={title} />
 
             <section className="mt-10">

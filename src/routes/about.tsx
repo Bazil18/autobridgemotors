@@ -29,13 +29,13 @@ function AboutPage() {
   return (
     <SiteLayout>
       <div className="border-b border-border bg-[var(--surface)]">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12 py-14">
           <p className="eyebrow">Who we are</p>
           <h1 className="mt-3 text-5xl sm:text-6xl">ABOUT AUTOBRIDGE MOTORS</h1>
         </div>
       </div>
 
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:px-12 py-16 lg:grid-cols-2">
         <div className="space-y-6 text-muted-foreground">
           <p className="text-lg text-foreground">
             We're a small, hands-on dealership built around one simple idea: sell cars we'd happily

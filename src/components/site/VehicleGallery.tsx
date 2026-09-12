@@ -37,7 +37,7 @@ export function VehicleGallery({ images, alt }: { images: string[]; alt: string 
         <img
           src={imageUrl(list[index])}
           alt={`${alt} — photo ${index + 1}`}
-          className="h-full w-full object-cover"
+          className="h-full w-full min-w-0 object-cover"
           width={1280}
           height={853}
         />

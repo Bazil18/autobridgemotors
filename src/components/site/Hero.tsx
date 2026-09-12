@@ -65,7 +65,7 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="relative mx-auto flex min-h-[86vh] max-w-7xl flex-col justify-center px-4 py-24 sm:px-6">
+      <div className="relative mx-auto flex min-h-[86vh] max-w-6xl flex-col justify-center px-5 sm:px-8 lg:px-12 py-24">
         <p className="eyebrow animate-rise">Imported. Inspected. Ready to drive.</p>
         <h1 className="animate-rise mt-5 max-w-3xl text-5xl leading-[0.92] sm:text-7xl lg:text-8xl">
           YOUR NEXT CAR

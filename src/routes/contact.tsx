@@ -31,7 +31,7 @@ function ContactPage() {
   return (
     <SiteLayout>
       <div className="border-b border-border bg-[var(--surface)]">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12 py-14">
           <p className="eyebrow">Get in touch</p>
           <h1 className="mt-3 text-5xl sm:text-6xl">CONTACT US</h1>
           <p className="mt-4 max-w-2xl text-muted-foreground">
@@ -40,7 +40,7 @@ function ContactPage() {
         </div>
       </div>
 
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:px-12 py-16 lg:grid-cols-2">
         <div className="space-y-4">
           <a
             href={SITE.phoneHref}

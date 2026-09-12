@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 export function Footer() {
   return (
     <footer className="border-t border-border bg-[var(--surface)]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:px-12 py-14 md:grid-cols-4">
         <div>
           <div className="font-display text-2xl">AUTOBRIDGE MOTORS</div>
           <p className="mt-3 max-w-xs text-sm text-muted-foreground">

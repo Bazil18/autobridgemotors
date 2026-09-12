@@ -61,7 +61,7 @@ function ImportPage() {
   return (
     <SiteLayout>
       <div className="border-b border-border bg-[var(--surface)]">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12 py-14">
           <p className="eyebrow">Import &amp; services</p>
           <h1 className="mt-3 text-5xl sm:text-6xl">SOURCED, IMPORTED, PREPARED</h1>
           <p className="mt-4 max-w-2xl text-muted-foreground">
@@ -71,7 +71,7 @@ function ImportPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+      <div className="mx-auto max-w-4xl px-5 sm:px-8 lg:px-12 py-16">
         <ol className="relative border-l border-border pl-8">
           {STEPS.map((step, i) => (
             <li key={step.title} className="animate-rise relative pb-10 last:pb-0">
