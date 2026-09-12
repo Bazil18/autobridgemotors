@@ -17,7 +17,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8 lg:px-12">
         <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
           <span className="h-7 w-1.5 rounded-full bg-primary" aria-hidden />
           <span className="font-display text-2xl tracking-wide">
