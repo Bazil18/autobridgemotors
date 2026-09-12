@@ -51,7 +51,10 @@ function EnquiriesPage() {
       .from("enquiries")
       .update({ handled: !e.handled })
       .eq("id", e.id);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     void queryClient.invalidateQueries({ queryKey: ["admin", "enquiries"] });
   };
 

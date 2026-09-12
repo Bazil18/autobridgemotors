@@ -43,7 +43,10 @@ function AdminStockPage() {
 
   const setStatus = async (v: Vehicle, status: string) => {
     const { error } = await supabase.from("vehicles").update({ status }).eq("id", v.id);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success(`${vehicleTitle(v)} marked ${status}`);
     void queryClient.invalidateQueries();
   };
@@ -51,7 +54,10 @@ function AdminStockPage() {
   const remove = async (v: Vehicle) => {
     if (!window.confirm(`Delete ${vehicleTitle(v)}? This can't be undone.`)) return;
     const { error } = await supabase.from("vehicles").delete().eq("id", v.id);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Vehicle deleted");
     void queryClient.invalidateQueries();
   };
