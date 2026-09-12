@@ -98,7 +98,7 @@ function VehiclePage() {
         </Link>
 
         <div className="mt-6 grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-          <div>
+          <div className="min-w-0">
             <VehicleGallery images={vehicle.images} alt={title} />
 
             <section className="mt-10">
