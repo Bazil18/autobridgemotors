@@ -51,7 +51,7 @@ function Index() {
     <SiteLayout>
       <Hero />
 
-      <section id="featured" className="mx-auto max-w-7xl scroll-mt-20 px-4 py-20 sm:px-6">
+      <section id="featured" className="mx-auto max-w-6xl scroll-mt-20 px-5 sm:px-8 lg:px-12 py-20">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="eyebrow">Current stock</p>
@@ -79,7 +79,7 @@ function Index() {
       </section>
 
       <section className="border-y border-border bg-[var(--surface)]">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 sm:px-8 lg:px-12 py-16 sm:grid-cols-2 lg:grid-cols-4">
           {TRUST.map(({ icon: Icon, title, body }) => (
             <div key={title}>
               <Icon className="h-7 w-7 text-primary" />
@@ -90,7 +90,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <section className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12 py-20">
         <div className="surface-panel relative overflow-hidden rounded-lg p-10 sm:p-14">
           <div
             className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl"

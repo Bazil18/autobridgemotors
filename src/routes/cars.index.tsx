@@ -139,7 +139,7 @@ function CarsPage() {
   return (
     <SiteLayout>
       <div className="border-b border-border bg-[var(--surface)]">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12 py-14">
           <p className="eyebrow">Our stock</p>
           <h1 className="mt-3 text-5xl sm:text-6xl">CARS FOR SALE</h1>
           <p className="mt-4 text-muted-foreground">
@@ -148,7 +148,7 @@ function CarsPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12 py-10">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Button
             variant="outline"

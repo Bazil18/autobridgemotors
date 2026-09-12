@@ -89,7 +89,7 @@ function VehiclePage() {
 
   return (
     <SiteLayout>
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12 py-8">
         <Link
           to="/cars"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
