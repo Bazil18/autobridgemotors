@@ -1,5 +1,5 @@
 export const SITE = {
-  name: "Autobridge Motors",
+  name: "Autobridge Motors Ireland",
   tagline: "Premium imported vehicles",
   phone: "0830450106",
   phoneHref: "tel:+353830450106",
