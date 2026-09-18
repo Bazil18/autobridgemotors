@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroAsset from "@/assets/hero-car.jpg.asset.json";
+import heroAsset from "@/assets/hero-car-new.jpg.asset.json";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -49,9 +49,9 @@ export function Hero() {
       >
         <img
           src={heroAsset.url}
-          alt="Premium imported performance car in a dark showroom"
-          width={1920}
-          height={1088}
+          alt="Premium imported silver car in a dark showroom with red accent lighting"
+          width={1672}
+          height={941}
           fetchPriority="high"
           className="h-full w-full object-cover"
         />
