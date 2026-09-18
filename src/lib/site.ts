@@ -7,7 +7,7 @@ export const SITE = {
   whatsappHref: "https://wa.me/353868615165",
   email: "autobridgemotors@outlook.com",
   emailHref: "mailto:autobridgemotors@outlook.com",
-  hours: "9:00 – 19:00, seven days a week",
+  hours: "9:00 – 20:00, seven days a week",
   location: "Ireland",
   social: {
     instagram: "https://instagram.com",
