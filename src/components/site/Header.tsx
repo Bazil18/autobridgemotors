@@ -21,7 +21,7 @@ export function Header() {
         <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
           <span className="h-7 w-1.5 rounded-full bg-primary" aria-hidden />
           <span className="font-display text-2xl tracking-wide">
-            AUTOBRIDGE <span className="text-muted-foreground">MOTORS</span>
+            AUTOBRIDGE <span className="text-muted-foreground">MOTORS</span> IRELAND
           </span>
         </Link>
 
