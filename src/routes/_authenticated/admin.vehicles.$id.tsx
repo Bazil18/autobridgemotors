@@ -137,6 +137,19 @@ function VehicleEditorPage() {
         images: form.images ?? [],
       };
 
+      // Make sure the web address (slug) is unique — two cars can share make/model/year.
+      const base = payload.slug.replace(/-\d+$/, "") || "car";
+      const { data: taken } = await supabase
+        .from("vehicles")
+        .select("id, slug")
+        .like("slug", `${base}%`);
+      const others = new Set((taken ?? []).filter((v) => v.id !== id).map((v) => v.slug));
+      if (others.has(payload.slug)) {
+        let n = 2;
+        while (others.has(`${base}-${n}`)) n++;
+        payload.slug = `${base}-${n}`;
+      }
+
       if (isNew) {
         const { error } = await supabase.from("vehicles").insert(payload);
         if (error) throw error;
@@ -147,7 +160,11 @@ function VehicleEditorPage() {
       toast.success("Vehicle saved");
       navigate({ to: "/admin" });
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Could not save vehicle");
+      const msg =
+        err && typeof err === "object" && "message" in err
+          ? String((err as { message: unknown }).message)
+          : "Could not save vehicle";
+      toast.error(msg);
     } finally {
       setSaving(false);
     }
