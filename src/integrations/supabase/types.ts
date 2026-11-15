@@ -103,6 +103,7 @@ export type Database = {
           nct_info: string | null
           overview: string | null
           price: number
+          price_on_request: boolean
           registration: string | null
           seats: number | null
           slug: string
@@ -133,6 +134,7 @@ export type Database = {
           nct_info?: string | null
           overview?: string | null
           price?: number
+          price_on_request?: boolean
           registration?: string | null
           seats?: number | null
           slug: string
@@ -163,6 +165,7 @@ export type Database = {
           nct_info?: string | null
           overview?: string | null
           price?: number
+          price_on_request?: boolean
           registration?: string | null
           seats?: number | null
           slug?: string
