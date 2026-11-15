@@ -1,0 +1,1 @@
+ALTER TABLE public.vehicles ADD COLUMN price_on_request boolean NOT NULL DEFAULT false;

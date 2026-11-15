@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { imageUrl } from "@/lib/images";
-import { formatMileage, formatPrice, STATUSES, vehicleTitle, type Vehicle } from "@/lib/vehicles";
+import { formatMileage, displayPrice, STATUSES, vehicleTitle, type Vehicle } from "@/lib/vehicles";
 import { useState } from "react";
 
 export const Route = createFileRoute("/_authenticated/admin/")({
@@ -113,7 +113,7 @@ function AdminStockPage() {
                 <div className="min-w-40 flex-1">
                   <p className="text-lg">{vehicleTitle(v)}</p>
                   <p className="text-sm text-muted-foreground">
-                    {formatPrice(v.price)} · {formatMileage(v.mileage)} · {v.fuel} ·{" "}
+                    {displayPrice(v)} · {formatMileage(v.mileage)} · {v.fuel} ·{" "}
                     {v.transmission}
                   </p>
                 </div>

@@ -8,6 +8,7 @@ export interface Vehicle {
   variant: string | null;
   year: number;
   price: number;
+  price_on_request?: boolean;
   mileage: number;
   fuel: string;
   transmission: string;
@@ -45,6 +46,10 @@ export function formatPrice(price: number) {
     currency: "EUR",
     maximumFractionDigits: 0,
   }).format(price);
+}
+
+export function displayPrice(v: Pick<Vehicle, "price" | "price_on_request">) {
+  return v.price_on_request ? "Price on Request" : formatPrice(v.price);
 }
 
 export function formatMileage(km: number) {

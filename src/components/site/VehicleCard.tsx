@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Fuel, Gauge, Settings2 } from "lucide-react";
 import { imageUrl } from "@/lib/images";
-import { formatMileage, formatPrice, vehicleTitle, type Vehicle } from "@/lib/vehicles";
+import { formatMileage, displayPrice, vehicleTitle, type Vehicle } from "@/lib/vehicles";
 
 export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
   const sold = vehicle.status === "sold";
@@ -55,7 +55,7 @@ export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
         </div>
 
         <div className="mt-auto flex items-center justify-between border-t border-border/70 pt-4">
-          <span className="font-display text-3xl text-foreground">{formatPrice(vehicle.price)}</span>
+          <span className="font-display text-3xl text-foreground">{displayPrice(vehicle)}</span>
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
             View details
           </span>
