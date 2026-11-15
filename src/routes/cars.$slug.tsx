@@ -10,6 +10,7 @@ import {
   fetchVehicleBySlug,
   formatMileage,
   formatPrice,
+  displayPrice,
   vehicleQuery,
   vehicleTitle,
   type Vehicle,
@@ -26,8 +27,8 @@ export const Route = createFileRoute("/cars/$slug")({
       return { meta: [{ title: "Vehicle unavailable" }, { name: "robots", content: "noindex" }] };
     }
     const v = loaderData.vehicle;
-    const title = `${vehicleTitle(v)} ${v.variant ?? ""} — ${formatPrice(v.price)} | Autobridge Motors`;
-    const description = `${vehicleTitle(v)}${v.variant ? ` ${v.variant}` : ""}, ${formatMileage(v.mileage)}, ${v.fuel}, ${v.transmission}. ${formatPrice(v.price)} at Autobridge Motors.`;
+    const title = `${vehicleTitle(v)} ${v.variant ?? ""} — ${displayPrice(v)} | Autobridge Motors`;
+    const description = `${vehicleTitle(v)}${v.variant ? ` ${v.variant}` : ""}, ${formatMileage(v.mileage)}, ${v.fuel}, ${v.transmission}. ${displayPrice(v)} at Autobridge Motors.`;
     return {
       meta: [
         { title },
@@ -162,7 +163,7 @@ function VehiclePage() {
               )}
               <h1 className="text-4xl">{title}</h1>
               {vehicle.variant && <p className="mt-1 text-muted-foreground">{vehicle.variant}</p>}
-              <p className="mt-4 font-display text-5xl">{formatPrice(vehicle.price)}</p>
+              <p className="mt-4 font-display text-5xl">{displayPrice(vehicle)}</p>
 
               <div className="mt-6 grid grid-cols-2 gap-x-6">
                 <Spec label="Year" value={vehicle.year} />

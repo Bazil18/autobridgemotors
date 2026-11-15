@@ -47,6 +47,7 @@ const EMPTY: Form = {
   transmission: "Automatic",
   status: "available",
   featured: false,
+  price_on_request: false,
   images: [],
   features: [],
   featuresText: "",
@@ -133,6 +134,7 @@ function VehicleEditorPage() {
         video_url: form.video_url || null,
         status: form.status ?? "available",
         featured: Boolean(form.featured),
+        price_on_request: Boolean(form.price_on_request),
         features,
         images: form.images ?? [],
       };
@@ -237,6 +239,16 @@ function VehicleEditorPage() {
             className="h-4 w-4 accent-[var(--primary)]"
           />
           <Label htmlFor="featured">Show on homepage as featured</Label>
+        </div>
+        <div className="mt-3 flex items-center gap-2">
+          <input
+            id="price_on_request"
+            type="checkbox"
+            checked={Boolean(form.price_on_request)}
+            onChange={(e) => set("price_on_request", e.target.checked)}
+            className="h-4 w-4 accent-[var(--primary)]"
+          />
+          <Label htmlFor="price_on_request">Show "Price on Request" instead of the price</Label>
         </div>
 
         <div className="mt-8 grid gap-5 lg:grid-cols-2">
