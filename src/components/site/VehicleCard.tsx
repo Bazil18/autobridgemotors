@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Fuel, Gauge, Settings2 } from "lucide-react";
 import { imageUrl } from "@/lib/images";
-import { formatMileage, formatPrice, displayPrice, vehicleTitle, type Vehicle } from "@/lib/vehicles";
+import { formatMileage, displayPrice, vehicleTitle, type Vehicle } from "@/lib/vehicles";
 
 export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
   const sold = vehicle.status === "sold";

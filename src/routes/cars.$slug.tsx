@@ -54,7 +54,7 @@ export const Route = createFileRoute("/cars/$slug")({
             mileageFromOdometer: { "@type": "QuantitativeValue", value: v.mileage, unitCode: "KMT" },
             offers: {
               "@type": "Offer",
-              price: v.price,
+              ...(v.price_on_request ? {} : { price: v.price }),
               priceCurrency: "EUR",
               availability:
                 v.status === "sold"

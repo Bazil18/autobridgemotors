@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { imageUrl } from "@/lib/images";
-import { formatMileage, formatPrice, displayPrice, STATUSES, vehicleTitle, type Vehicle } from "@/lib/vehicles";
+import { formatMileage, displayPrice, STATUSES, vehicleTitle, type Vehicle } from "@/lib/vehicles";
 import { useState } from "react";
 
 export const Route = createFileRoute("/_authenticated/admin/")({
